@@ -1,7 +1,9 @@
 {
-    "name": "wawoff2",
-    "version": "2.0.1",
+    "name": "@chinese-fonts/wawoff2",
+    "version": "2.0.3",
     "description": "Convert TTF font to WOFF2",
+    "type": "module",
+    "main": "index.js",
     "keywords": [
         "font",
         "ttf",
@@ -9,12 +11,12 @@
         "woff2",
         "convertor"
     ],
-    "type": "module",
     "license": "MIT",
     "repository": "fontello/wawoff2",
     "scripts": {
         "build": "docker build -t wawoff2_build ./src && docker run --rm -v $(pwd):/src/wawoff2 -u $(id -u):$(id -g) -it wawoff2_build make -C /src/wawoff2/src",
-        "test": "standardx -v . && mocha ./test"
+        "test": "standardx --fix && standardx -v . && mocha ./test -b",
+        "fix": "standardx --fix"
     },
     "bin": {
         "woff2_compress.js": "./bin/woff2_compress.js",
@@ -24,6 +26,9 @@
         "compress.js",
         "decompress.js",
         "index.js",
+        "compress.d.ts",
+        "decompress.d.ts",
+        "index.d.ts",
         "bin/",
         "build/"
     ],
