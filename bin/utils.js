@@ -2,7 +2,7 @@
 
 import { extname } from 'path'
 
-export function swap_ext(filename, from_ext, to_ext) {
+export function swap_ext (filename, from_ext, to_ext) {
   const ext = extname(filename)
 
   // if filename has an extension, swap it

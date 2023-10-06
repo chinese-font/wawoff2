@@ -2,11 +2,11 @@
 
 import { deepEqual } from 'assert'
 import { readFileSync as read } from 'fs'
-import { join,dirname } from 'path'
-import { fileURLToPath } from 'url';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { join, dirname } from 'path'
+import { fileURLToPath } from 'url'
 import { compress, decompress } from '../index.js'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 
 describe('chain', function () {
