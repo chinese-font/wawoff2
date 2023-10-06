@@ -4,14 +4,14 @@
 
 'use strict'
 
-const fs       = require('fs')
-const argparse = require('argparse')
+import { readFileSync, writeFileSync } from 'fs'
+import { ArgumentParser } from 'argparse'
 
-const decompress = require('../decompress')
-const { swap_ext } = require('./utils')
+import decompress from '../decompress'
+import { swap_ext } from './utils'
 
 
-const parser = new argparse.ArgumentParser({
+const parser = new ArgumentParser({
   prog:     'woff2_decompress.js',
   add_help:  true
 })
@@ -38,7 +38,7 @@ let outfile = args.outfile
 let input
 
 try {
-  input = fs.readFileSync(infile)
+  input = readFileSync(infile)
 } catch (e) {
   console.error(`Can't open input file (${infile})`)
   process.exit(1)
@@ -53,7 +53,7 @@ decompress(input).then(ttf => {
       outfile = swap_ext(infile, '.woff2', '.ttf')
     }
 
-    fs.writeFileSync(outfile, ttf)
+    writeFileSync(outfile, ttf)
   }
 }, error => {
   console.log(error)

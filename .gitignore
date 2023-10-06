@@ -2,3 +2,4 @@
 *.bc
 
 /node_modules
+/build/*

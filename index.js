@@ -1,4 +1,4 @@
 'use strict'
 
-exports.compress = require('./compress')
-exports.decompress = require('./decompress')
+export { compress } from './compress.js'
+export { decompress } from './decompress.js'

@@ -4,14 +4,14 @@
 
 'use strict'
 
-const fs       = require('fs')
-const argparse = require('argparse')
+import { readFileSync, writeFileSync } from 'fs'
+import { ArgumentParser } from 'argparse'
 
-const compress = require('../compress')
-const { swap_ext } = require('./utils')
+import compress from '../compress'
+import { swap_ext } from './utils'
 
 
-const parser = new argparse.ArgumentParser({
+const parser = new ArgumentParser({
   prog:     'woff2_compress.js',
   add_help:  true
 })
@@ -38,7 +38,7 @@ let outfile = args.outfile
 let input
 
 try {
-  input = fs.readFileSync(infile)
+  input = readFileSync(infile)
 } catch (e) {
   console.error(`Can't open input file (${infile})`)
   process.exit(1)
@@ -53,7 +53,7 @@ compress(input).then(woff2 => {
       outfile = swap_ext(infile, '.ttf', '.woff2')
     }
 
-    fs.writeFileSync(outfile, woff2)
+    writeFileSync(outfile, woff2)
   }
 }, error => {
   console.log(error)

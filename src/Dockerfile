@@ -1,8 +1,8 @@
-FROM emscripten/emsdk:2.0.34
+FROM emscripten/emsdk:3.1.46
 
 RUN git clone --recursive https://github.com/google/woff2.git
 RUN cd woff2 && \
-    git checkout a0d0ed7da27b708c0a4e96ad7a998bddc933c06e
+    git checkout 4721483ad780ee2b63cb787bfee4aa64b61a0446
 
 RUN mkdir -p /src/build/brotli-wasm && \
     cd /src/build/brotli-wasm && \
@@ -16,7 +16,7 @@ RUN mkdir -p /src/build/brotli-native && \
 
 RUN mkdir -p /src/build/woff2-wasm && \
     cd /src/build/woff2-wasm && \
-    emcmake cmake /src/woff2 \
+    emcmake cmake /src/woff2  \
       -DCMAKE_BUILD_TYPE=Release \
       -DNOISY_LOGGING=OFF \
       -DBROTLIENC_INCLUDE_DIRS=/src/woff2/brotli/c/include/ \

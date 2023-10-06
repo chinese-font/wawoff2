@@ -1,10 +1,12 @@
 'use strict'
 
-const assert = require('assert')
-const read   = require('fs').readFileSync
-const join   = require('path').join
+import { deepEqual } from 'assert'
+import { readFileSync as read } from 'fs'
+import { join,dirname } from 'path'
+import { fileURLToPath } from 'url';
 
-const wawoff2 = require('../')
+const __dirname = dirname(fileURLToPath(import.meta.url));
+import { compress, decompress } from '../index.js'
 
 
 describe('chain', function () {
@@ -16,13 +18,13 @@ describe('chain', function () {
   it('compress', async function () {
     this.timeout(3000)
 
-    const out = await wawoff2.compress(sample)
-    assert.deepEqual(out, sample_compressed)
+    const out = await compress(sample)
+    deepEqual(out, sample_compressed)
   })
 
   it('decompress', async function () {
-    const out = await wawoff2.decompress(sample_compressed)
-    assert.deepEqual(out, sample_decompressed)
+    const out = await decompress(sample_compressed)
+    deepEqual(out, sample_decompressed)
   })
 
 })
