@@ -2,7 +2,10 @@ FROM emscripten/emsdk:3.1.46
 
 RUN git clone --recursive https://github.com/google/woff2.git
 RUN cd woff2 && \
-    git checkout 4721483ad780ee2b63cb787bfee4aa64b61a0446
+    git checkout 0f4d304faa1c62994536dc73510305c7357da8d4 && \
+    cd brotli && \
+    git checkout 9b83be233e0ec867d91bcd451717c881eaf35ca2 && cd ..
+
 
 RUN mkdir -p /src/build/brotli-wasm && \
     cd /src/build/brotli-wasm && \
