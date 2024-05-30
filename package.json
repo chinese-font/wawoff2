@@ -18,10 +18,6 @@
         "test": "standardx --fix && standardx -v . && mocha ./test -b",
         "fix": "standardx --fix"
     },
-    "bin": {
-        "woff2_compress.js": "./bin/woff2_compress.js",
-        "woff2_decompress.js": "./bin/woff2_decompress.js"
-    },
     "files": [
         "compress.js",
         "decompress.js",
@@ -32,10 +28,8 @@
         "bin/",
         "build/"
     ],
-    "dependencies": {
-        "argparse": "^2.0.1"
-    },
     "devDependencies": {
+        "argparse": "^2.0.1",
         "mocha": "^9.1.4",
         "standardx": "^7.0.0"
     }
